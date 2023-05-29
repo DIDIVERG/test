@@ -1,0 +1,28 @@
+﻿paths:
+  /api/token:
+    post:
+      tags:
+        - Authentication
+      summary: Generate JWT token
+      description: Generates a JWT token based on username and password
+      operationId: generateToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string

@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "PkmR6mMr1892T650rFSjCX6iPFT7OzvFplqqPzecatA=",
+  "Source": "WebApplication4",
+  "BasePath": "_content/WebApplication4",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebApplication4\\wwwroot",
+      "Source": "WebApplication4",
+      "ContentRoot": "C:\\Users\\ILYA\\RiderProjects\\WebApplication4\\WebApplication4\\wwwroot\\",
+      "BasePath": "_content/WebApplication4",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\ILYA\\RiderProjects\\WebApplication4\\WebApplication4\\wwwroot\\swagger.yaml",
+      "SourceId": "WebApplication4",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ILYA\\RiderProjects\\WebApplication4\\WebApplication4\\wwwroot\\",
+      "BasePath": "_content/WebApplication4",
+      "RelativePath": "swagger.yaml",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\swagger.yaml"
+    }
+  ]
+}
