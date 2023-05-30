@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using WebApplication4.Database;
 using WebApplication4.Database.Helpers;
@@ -7,6 +10,7 @@ using WebApplication4.Database.Models;
 using WebApplication4.Middleware;
 using WebApplication4.Profiles;
 using WebApplication4.Services.JwtTokenGeneratorService;
+using WebApplication4.Services.ValidationService;
 
 namespace WebApplication4.Extensions;
 
@@ -21,29 +25,54 @@ public static class ServicesRegistrar
             o.UseSnakeCaseNamingConvention();
         });
         collection.AddScoped<EnsureDatabaseCreatedMiddleware>();
+        collection.AddScoped<SetSwaggerDefaultHeaderValueMiddleware>();
         collection.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         collection.AddScoped<IDatabaseHelper, DatabaseHelper>();
         collection.AddAutoMapper(typeof(UserProfile));
+        collection.AddScoped(typeof(Validator));
+        collection.AddAuthorization(options =>
+        {
+            options.AddPolicy("OnlyAdmin", policy =>
+            {
+                policy.RequireRole("admin"); 
+                policy.RequireClaim("revoked", "false"); 
+            });
+            options.AddPolicy("OnlyUser", policy =>
+            {
+                policy.RequireRole("user"); 
+                policy.RequireClaim("revoked", "false"); 
+            });
+            options.AddPolicy("All", policy =>
+            {
+                policy.RequireClaim("revoked", "false"); 
+            });
+        });
+        collection.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = configuration["Jwt:Issuer"], 
+                    ValidAudience = configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey
+                        (Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"] ?? string.Empty))
+                };
+            });
         collection.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
-            c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
+
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
-                Description = "OAuth2 password",
-                Type = SecuritySchemeType.OAuth2,
-                Flows = new OpenApiOAuthFlows
-                {
-                    Password = new OpenApiOAuthFlow
-                    {
-                        TokenUrl = new Uri("/api/auth/login", UriKind.Relative), 
-                        Scopes = new Dictionary<string, string>
-                        {
-                            { "values:read", "Read access to protected resources" },
-                            { "values:write", "Write access to protected resources" }
-                        }
-                    }
-                }
+                Description = "JWT Authorization header using the Bearer scheme.",
+                Type = SecuritySchemeType.Http,
+                Scheme = "bearer",
             });
+
             c.AddSecurityRequirement(new OpenApiSecurityRequirement
             {
                 {
@@ -52,13 +81,14 @@ public static class ServicesRegistrar
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.SecurityScheme,
-                            Id = "oauth2"
+                            Id = "Bearer"
                         }
                     },
                     Array.Empty<string>()
                 }
             });
         });
+    
 
 
         return collection;

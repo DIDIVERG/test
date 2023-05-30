@@ -37,9 +37,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<EnsureDatabaseCreatedMiddleware>();
+app.UseMiddleware<SetSwaggerDefaultHeaderValueMiddleware>();
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllers();
 

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication4.Database;
 using WebApplication4.Database.Helpers;
+using WebApplication4.DTOs;
 using WebApplication4.Services.JwtTokenGeneratorService;
 
 namespace WebApplication4.Controllers
@@ -27,14 +28,16 @@ namespace WebApplication4.Controllers
         }
         
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(string username, string password)
+        [AllowAnonymous]
+        public async Task<ActionResult<string>> Login(UserDto user)
         {
-            var user = await _userContext.Users.FirstOrDefaultAsync(i => i.Login == username && i.Password == password);
-            if (user is null)
+            var userNew = await _userContext.Users
+                .FirstOrDefaultAsync(i => i.Login == user.Login && i.Password == user.Password);
+            if (userNew is null)
             {
                 return BadRequest("Uset doesen't exist");
             }
-            return _jwtTokenGenerator.GenerateToken(user);
+            return _jwtTokenGenerator.GenerateToken(userNew);
         }
         
     }

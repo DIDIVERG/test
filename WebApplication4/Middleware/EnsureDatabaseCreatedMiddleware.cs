@@ -18,7 +18,7 @@ public class EnsureDatabaseCreatedMiddleware : IMiddleware
     {
         if (_context != null)
         {
-          await  _helper.ReCreateDatabase(_context);
+          await  _helper.EnsureDatabaseCreated(_context);
         }
         await next(context);
     }
