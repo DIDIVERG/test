@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication4.Database;
 using WebApplication4.Database.Helpers;
 using WebApplication4.DTOs;
+using WebApplication4.Models;
 using WebApplication4.Services.JwtTokenGeneratorService;
 
 namespace WebApplication4.Controllers
@@ -29,10 +30,10 @@ namespace WebApplication4.Controllers
         
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<ActionResult<string>> Login(UserDto user)
+        public async Task<ActionResult<string>> Login(SenderCredentials user)
         {
             var userNew = await _userContext.Users
-                .FirstOrDefaultAsync(i => i.Login == user.Login && i.Password == user.Password);
+                .FirstOrDefaultAsync(i => i.Login == user.SenderLogin && i.Password == user.SenderPassword);
             if (userNew is null)
             {
                 return BadRequest("Uset doesen't exist");

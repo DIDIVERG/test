@@ -20,9 +20,9 @@ public class SetSwaggerDefaultHeaderValueMiddleware : IMiddleware
         if (string.IsNullOrEmpty(context.Request.Headers["Authorization"]))
         {
            var user = await _context.Users.FirstOrDefaultAsync(i => i.Login == "Master");
-           var _defaultToken = _jwtTokenGenerator.GenerateToken(user);
-           context.Request.Headers["Authorization"] = $"Bearer {_defaultToken}";
+           var defaultToken = _jwtTokenGenerator.GenerateToken(user);
+           context.Request.Headers["Authorization"] = $"Bearer {defaultToken}";
         }
-        next(context);
+        await next(context);
     }
 }

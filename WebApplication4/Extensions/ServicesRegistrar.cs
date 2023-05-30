@@ -10,7 +10,6 @@ using WebApplication4.Database.Models;
 using WebApplication4.Middleware;
 using WebApplication4.Profiles;
 using WebApplication4.Services.JwtTokenGeneratorService;
-using WebApplication4.Services.ValidationService;
 
 namespace WebApplication4.Extensions;
 
@@ -29,7 +28,6 @@ public static class ServicesRegistrar
         collection.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         collection.AddScoped<IDatabaseHelper, DatabaseHelper>();
         collection.AddAutoMapper(typeof(UserProfile));
-        collection.AddScoped(typeof(Validator));
         collection.AddAuthorization(options =>
         {
             options.AddPolicy("OnlyAdmin", policy =>
