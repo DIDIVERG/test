@@ -136,6 +136,7 @@ namespace WebApplication4.Controllers
         }
         
         [HttpDelete("Delete1")]
+        [UserNotExist]
         [Authorize(Policy = "OnlyAdmin")]
         public async Task<ActionResult<User>> DeleteUserByLogin(SenderCredentials sender,string login)
         {
