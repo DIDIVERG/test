@@ -83,7 +83,8 @@ namespace WebApplication4.Controllers
         [HttpGet("Get1")]
         [Authorize(Policy = "OnlyAdmin")]
         [UserNotExist]
-        public async Task<ActionResult<List<User>>> GetActiveUsersSortedByCreatedDate([FromQuery] SenderCredentials sender)
+        public async Task<ActionResult<List<User>>> GetActiveUsersSortedByCreatedDate
+            ([FromQuery] SenderCredentials sender)
         {
             return await _userContext.Users.Where(i => i.RevokedOn == default)
                 .OrderBy(i => i.CreatedOn).ToListAsync();
@@ -150,7 +151,7 @@ namespace WebApplication4.Controllers
             return Ok(userToDelete);
         }
         
-        [HttpPut("Recovery")]
+        [HttpPatch("Recovery")]
         [UserNotExist]
         [Authorize(Policy = "OnlyAdmin")]
         public async Task<ActionResult<User>> Recover(SenderCredentials sender,string login)

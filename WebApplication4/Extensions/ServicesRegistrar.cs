@@ -86,9 +86,6 @@ public static class ServicesRegistrar
                 }
             });
         });
-    
-
-
         return collection;
     }
 }

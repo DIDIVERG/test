@@ -26,7 +26,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
-        // Добавьте следующую конфигурацию для использования JWT токена в Swagger
         c.DocumentTitle = "API Documentation";
         c.DefaultModelsExpandDepth(-1);
         c.DisplayRequestDuration();
