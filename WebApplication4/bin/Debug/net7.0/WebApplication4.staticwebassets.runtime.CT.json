@@ -1,0 +1,1 @@
+{"ContentRoots":["/app/wwwroot"],"Root":{"Children":{"swagger.yaml":{"Children":null,"Asset":{"ContentRootIndex":0,"SubPath":"swagger.yaml"},"Patterns":null}},"Asset":null,"Patterns":[{"ContentRootIndex":0,"Pattern":"**","Depth":0}]}}

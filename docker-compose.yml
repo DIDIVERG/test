@@ -1,0 +1,42 @@
+version: "3.4"
+
+networks:
+  back-bd:
+    driver: bridge
+
+services:
+  back-api:
+    build:
+      context: . 
+      dockerfile: WebApplication4/Dockerfile
+    container_name: user-backend
+    expose:
+      - 5000
+    ports:
+      - "8000:5000"
+    environment:
+      - ConnectionStrings__DefaultConnection=User ID=postgres; Server=db;Port=5432; IntegratedSecurity=true; Pooling=true; Database=user_db;
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - back-bd
+    restart: unless-stopped
+    depends_on:
+      - db
+  db: 
+    image: postgres
+    container_name: postgres-sql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=user_db
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_PASSWORD=pass
+    ports:
+      - "49154:5432"
+    restart: unless-stopped
+    networks:
+      - back-bd
+    volumes:
+      - app_data:/var/lib/postgresql/data       
+volumes:
+  app_data:  
+         

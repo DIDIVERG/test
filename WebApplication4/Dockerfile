@@ -2,7 +2,7 @@
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
-
+ENV ASPNETCORE_URLS=http://+:5000
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["WebApplication4/WebApplication4.csproj", "WebApplication4/"]
