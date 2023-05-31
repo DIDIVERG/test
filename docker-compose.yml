@@ -6,6 +6,7 @@ networks:
 
 services:
   back-api:
+    image: divergent7/webapplication4-back-api
     build:
       context: . 
       dockerfile: WebApplication4/Dockerfile

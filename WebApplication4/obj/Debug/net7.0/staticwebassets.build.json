@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PkmR6mMr1892T650rFSjCX6iPFT7OzvFplqqPzecatA=",
+  "Hash": "0XrPp0/EEZOULvJZUCVCUH5W+SDY75ptZrZueUO33nM=",
   "Source": "WebApplication4",
   "BasePath": "_content/WebApplication4",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "WebApplication4\\wwwroot",
       "Source": "WebApplication4",
-      "ContentRoot": "C:\\Users\\ILYA\\RiderProjects\\WebApplication4\\WebApplication4\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ILYA\\RiderProjects\\FUCK\\WebApplication4\\wwwroot\\",
       "BasePath": "_content/WebApplication4",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\ILYA\\RiderProjects\\WebApplication4\\WebApplication4\\wwwroot\\swagger.yaml",
+      "Identity": "C:\\Users\\ILYA\\RiderProjects\\FUCK\\WebApplication4\\wwwroot\\swagger.yaml",
       "SourceId": "WebApplication4",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ILYA\\RiderProjects\\WebApplication4\\WebApplication4\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ILYA\\RiderProjects\\FUCK\\WebApplication4\\wwwroot\\",
       "BasePath": "_content/WebApplication4",
       "RelativePath": "swagger.yaml",
       "AssetKind": "All",

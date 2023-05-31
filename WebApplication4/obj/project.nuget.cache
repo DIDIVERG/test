@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U61kIuGyJtslniK7r7weB4qDipE77+/+KGrwh7a02540XysYnx3DyLpKZAU3gOUX5MVY50xMxucPpmfY8hdN0g==",
+  "dgSpecHash": "m6n0uP4vEFGBm/Gkmznr0cYIp+M+WkHswiXFQ/OA0WcqVTX9j2DnhWgGOdrjL0RivAqUvHffirzOCGUEGa09Xg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ILYA\\RiderProjects\\WebApplication4\\WebApplication4\\WebApplication4.csproj",
+  "projectFilePath": "C:\\Users\\ILYA\\RiderProjects\\FUCK\\WebApplication4\\WebApplication4.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ILYA\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\ILYA\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

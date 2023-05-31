@@ -11481,11 +11481,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ILYA\\RiderProjects\\WebApplication4\\WebApplication4\\WebApplication4.csproj",
+      "projectUniqueName": "C:\\Users\\ILYA\\RiderProjects\\FUCK\\WebApplication4\\WebApplication4.csproj",
       "projectName": "WebApplication4",
-      "projectPath": "C:\\Users\\ILYA\\RiderProjects\\WebApplication4\\WebApplication4\\WebApplication4.csproj",
+      "projectPath": "C:\\Users\\ILYA\\RiderProjects\\FUCK\\WebApplication4\\WebApplication4.csproj",
       "packagesPath": "C:\\Users\\ILYA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ILYA\\RiderProjects\\WebApplication4\\WebApplication4\\obj\\",
+      "outputPath": "C:\\Users\\ILYA\\RiderProjects\\FUCK\\WebApplication4\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
